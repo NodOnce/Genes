@@ -1,0 +1,104 @@
+<div id="relations" class="swapper accordion">
+  <a href="#" class="swap_link swap_active" data-swap="swap_one">Attached User</a>
+  <div class="swap_one swap_container swap_active p1r">
+    <a class="dib w10r h10r" href="{{data.deezer.user.link}}" target="_blank">
+      <span class="picture dib w10r h10r" style="background-image:url('{{data.deezer.user.picture_medium}}');background-size: contain;"></span>
+    </a>
+    <span class="dib w-10r p1r">
+      <a href="{{data.deezer.user.link}}" target="_blank">
+        <h4 class="name">{{data.deezer.user.name}}</h4>
+        <span class="id"># {{data.deezer.user.id}}</span>
+      </a>
+      <span class="db mt05r">
+        <span class="flag flag-{{data.deezer.user.country}}"></span>
+      </span>
+      <span class="db mt05r">
+        <span class="albums"><b>{{data.deezer.user.album_count}}</b> albums</span>
+        <span class="playlists"><b>{{data.deezer.user.playlist_count}}</b> playlists</span>
+      </span>
+    </span>
+  </div>
+
+  <a href="#" class="swap_link swap_active" data-swap="swap_two">Inventory Info</a>
+  <div class="swap_two swap_container swap_active p1r">
+    <del g="if|data.deezer.inventory.albums|is:0" NoAlbums>
+      <div class="fw">
+        <div class="w10r dib"><a href="deezer;albums=get" class="button fw">Get Albums</a> </div>
+        <div class="w-10r dib pl1r pt1r">
+          <span class="db">Deezer Albums are not locally cached.</span>
+        </div>
+      </div>
+    </del>
+    <!--NoAlbums-->
+    <del g="if|data.deezer.inventory.playlists|is:0" NoPlaylists>
+      <div class="fw pt1r">
+        <div class="w10r dib"><a href="deezer;playlists=get" class="button fw">Get Playlists</a> </div>
+        <div class="w-10r dib pl1r pt1r">
+          <span class="db">Deezer Playlists are not locally cached.</span>
+        </div>
+      </div>
+    </del>
+    <!--NoPlaylists-->
+
+    <del g="if|data.deezer.inventory.albums|not:0" YesAlbums>
+      <div class="fw pt1r">
+        <div class="w10r dib"><a href="deezer;albums=get" class="button fw">Update Albums</a> </div>
+        <div class="w-10r dib pl1r">
+          <span class="db dz_note">Deezer Albums are cached on <b>{{data.deezer.inventory.albums.date}}</b>.</span>
+          <span class="db">
+            <del g="each|data.deezer.inventory.albums.list" ddial>
+              <a target="_blank" class="label" href="deezer;albums=view;file={{0}}.json">{{0}}</a>
+            </del>
+            <!--ddial-->
+        </div>
+      </div>
+    </del>
+    <!--YesAlbums-->
+
+    <del g="if|data.deezer.inventory.playlists|not:0" YesPlaylists>
+      <div class="fw pt1r">
+        <div class="w10r dib"><a href="deezer;playlists=get" class="button fw">Update Playlists</a> </div>
+        <div class="w-10r dib pl1r">
+          <span class="db dz_note">Deezer Playlists are cached on <b>{{data.deezer.inventory.playlists.date}}</b>.</span>
+          <span class="db">
+            <del g="each|data.deezer.inventory.playlists.list" ddipl>
+              <a target="_blank" class="label" href="deezer;playlists=view;file={{0}}.json">{{0}}</a>
+            </del>
+            <!--ddipl-->
+          </span>
+        </div>
+      </div>
+    </del>
+    <!--YesPlaylists-->
+
+    <del g="if|data.deezer.inventory.albums|not:0" YesSyncAlbums>
+      <div class="fw pt1r">
+        <div class="w10r dib"><a href="deezer;albums=sync" class="button fw">Sync Albums</a> </div>
+        <div class="w-10r dib pl1r pt1r">
+          <span class="db">Deezer Albums are synced to DB on <b>never</b>.</span>
+        </div>
+      </div>
+    </del>
+    <!--YesSyncAlbums-->
+
+    <del g="if|data.deezer.inventory.playlists|not:0" YesSyncPlaylists>
+      <div class="fw pt1r">
+        <div class="w10r dib"><a href="deezer;playlists=sync" class="button fw">Sync Playlists</a> </div>
+        <div class="w-10r dib pl1r pt1r">
+          <span class="db">Deezer Playlists are synced to DB on <b>never</b>.</span>
+        </div>
+      </div>
+    </del>
+    <!--YesSyncPlaylists-->
+  </div>
+
+  <del g="remove" remove>
+    <a href="#" class="swap_link" data-swap="swap_three">Configuration</a>
+    <div class="swap_three swap_container">
+      <p>Ex placeat et numquam. Ut et unde aliquid rerum corrupti optio autem praesentium. Consequatur voluptatem
+        et est autem necessitatibus maxime repellendus. Dolorem consectetur doloribus temporibus quo autem
+        repellat. Architecto quia consequuntur ea consectetur tempore est voluptates nisi.</p>
+    </div>
+  </del>
+  <!--remove-->
+</div>

@@ -1,0 +1,88 @@
+<div class="g_container" id="grid_playlists">
+    <div class="grid playlists">
+        <div class="controls">
+            <span class="title dib w25p"><b>Total:</b> {{data.playlists.total}}</span>
+            <span class="dib w25p"><b>List:</b> {{data.playlists.count}}</span>
+            <span class="dib w25p"><b>Page:</b> {{data.playlists.current_page}}/{{data.playlists.total_pages}}</span>
+            <a class="button" href="deezer=playlists;seq={{data.playlists.seq}};list={{data.playlists.list}};start={{data.playlists.prev_start}}">&laquo;</a>
+            <a class="button sort_filter toggle" data-toggle="#form_sort_filter" href="#">🛠️</a>
+            <a class="button" href="deezer=playlists;seq={{data.playlists.seq}};list={{data.playlists.list}};start={{data.playlists.next_start}}">&raquo;</a>
+            <form id="form_sort_filter" class="dn" method="POST" action="deezer=playlists;seq={{data.playlists.seq}}" class="fw">
+                <input class="w10p" type="text" name="list" placeholder="List" value="{{data.playlists.list}}">
+                <input class="w10p" type="text" name="page" placeholder="Page" value="{{data.playlists.current_page}}">
+                <input class="w35p" type="text" name="sort" placeholder="Sort" value="{{data.playlists.sort_val}}">
+                <input class="w35p" type="text" name="filter" placeholder="Filter" value="{{data.playlists.filter_val}}">
+                <input class="w10p" type="submit" value="✔️">
+            </form>
+        </div>
+
+        <div class="list">
+            <div class="list_header">
+                <span class="title dib w35p">title</span>
+                <span class="artist dib w15p">deezer #</span>
+                <span class="artist dib w10p">track #</span>
+                <span class="last_login_date dib w20p">labels</span>
+                <span class="created_date dib w20p">created (tsc)</span>
+            </div>
+            <div class="list_data" g="each|data.playlists.data" old_user_row>
+                <div class="list_row {{g_state}}">
+                    <span class="title dib w35p" title="{{g_name}}">
+                        <a href="#" class="show transfer" data-transfer='{"mode":"playlist","id":"{{id}}","g_state":"{{g_state}}","deezer_id":"{{g_bits.deezer_id}}","track_count":"{{g_bits.track_count}}","url_short":"{{url_short}}","title":"{{g_bits.title}}","tags":"{{g_labels}}","url_short":"{{g_bits.url_short}}","cover":"https://api.deezer.com/playlist/{{g_bits.deezer_id}}/image?size=500"}' data-show="#playlist_win" data-activate=".list_row">
+                            {{g_name}}
+                        </a>
+                        <ol id="{{g_bits.deezer_id}}_tracks" class="dn">{{g_bits.tracks}}</ol>
+                    </span>
+                    <span class="artist dib w15p"><a target="_blank" href="https://www.deezer.com/playlist/{{g_bits.deezer_id}}">{{g_bits.deezer_id}}</a></span>
+                    <span class="artist dib w10p">{{g_bits.track_count}}</span>
+                    <span class="tags_js dib w20p" title='{{g_labels}}'>{{g_labels}}</span>
+                    <span class="created_date dib w20p">{{tsc}}</span>
+                </div>
+            </div>
+            <!--old_user_row-->
+        </div>
+    </div>
+</div>
+
+<div id="playlist_win" class="gui_window hidable dn" style="width: 640px;top: 1rem; left: 46rem;">
+    <div class="gui_window_title">
+        <p class="title_text">Editor</p>
+        <b class="hide">&times;</b>
+    </div>
+    <div class="gui_window_content">
+        <div class="swapper">
+            <a href="#" class="swap_link swap_active" data-swap="swap_profile">
+                <h5>Playlist Details</h5>
+            </a>
+            <form id="playlist_details_form" method="POST">
+                <div class="swap_profile swap_container swap_active">
+                    <p>Deezer ID, Track Count, Short Url, Artist, Title, Tags</p>
+                    <div class="dib w70p">
+                        <input class="deezer_id dib w34p" name="deezer_id" type="text" placeholder="Deezer ID #" value="">
+                        <input class="track_count dib w33p" name="track_count" type="text" placeholder="Track #" value="">
+                        <input class="url_short dib w33p" name="url_short" type="text" placeholder="Url" value="">
+                        <input class="title dib fw" name="title" type="text" placeholder="Title" value="">
+                        <textarea class="tags fw" name="tags" style="height:3.2rem;" placeholder="Tags"></textarea>
+                        <select class="g_state fw preselect" name="g_state">
+                            <option>Select Item State</option>
+                            <del g="each|data.states" state_select>
+                                <option value="{{0}}">{{0}}</option>
+                            </del>
+                            <!--state_select-->
+                        </select>
+                    </div>
+                    <div class="dib w30p">
+                        <a class="link" target="_blank" href="#">
+                            <img class="cover dib fw" id="cover" src="#">
+                        </a>
+                    </div>
+                </div>
+                <a href="#" class="swap_link" data-swap="swap_tracklist">
+                    <h5>Tracklist</h5>
+                </a>
+                <div class="swap_tracklist swap_container tracks">
+                    <ol class="tracklist"></ol>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

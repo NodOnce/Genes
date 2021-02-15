@@ -1,0 +1,54 @@
+<del g="if|meta.user.type|not:guest" AdminNavBar>
+  <div class="header_bar">
+    <h4><a class="ico" href="#"><i class="gi menu light"></i></a> one</h4>
+  </div>
+  <div class="module_menus ss_raw">
+    <div class="swapper accordion">
+
+      <a href="#" class="swink swactive" data-swap=".swap_dash">Dashboard</a>
+      <div class="swap_dash swonts swactive">
+        <a href="{{meta.url.base}}admin" class="item desktop_icon dib"><i class="gi dashboard lurple"></i> Home</a>
+        <a href="{{meta.url.base}}" class="item desktop_icon dib"><i class="gi home green"></i> Clone</a>
+        <a href="config" class="item desktop_icon dib"><i class="gi gear black"></i> Config</a>
+        <a href="logs" class="item desktop_icon dib"><i class="gi bell light"></i> Logs</a>
+      </div>
+
+      <del g="if|meta.mods.notes|is:1" ModNotesLoaded>
+        <del g="if|meta.clone.db|is:1" IfDBConnectedNotes>
+          <a href="#" class="swink swactive" data-swap=".swap_notes">Notes</a>
+          <div class="swap_notes swonts swactive">
+            <a href="notes=list" class="item desktop_icon large"><i class="gi notes black"></i> List Everything</a>
+          </div>
+        </del>
+        <!--IfDBConnectedNotes-->
+      </del>
+      <!--ModNotesLoaded-->
+
+      <del g="if|meta.mods.admin|is:1" ModAdminLoaded>
+        <del g="if|meta.clone.db|is:1" IfDBConnected>
+          <a href="#" class="swink swactive" data-swap=".swap_admin">Admin</a>
+          <div class="swap_admin swonts swactive">
+            <a href="admin=users" class="item desktop_icon large"><i class="gi users black"></i> Users</a>
+            <a href="admin=items" class="item desktop_icon large"><i class="gi items black"></i> Items</a>
+            <a href="admin=labels" class="item desktop_icon dib"><i class="gi labels black"></i> Labels</a>
+            <a href="admin=events" class="item desktop_icon dib"><i class="gi events black"></i> Events</a>
+          </div>
+        </del>
+        <!--IfDBConnected-->
+      </del>
+      <!--ModAdminLoaded-->
+
+      <del g="if|meta.mods.deezer|is:1" ModDeezerLoaded>
+        <a href="#" class="swink" data-swap=".swap_two">Deezer</a>
+        <div class="swap_two swonts">
+          <a href="deezer" class="item">Connection</a>
+          <a href="deezer=albums" class="item">Albums</a>
+          <a href="deezer=playlists" class="item">Playlists</a>
+        </div>
+      </del>
+      <!--ModDeezerLoaded-->
+
+    </div>
+  </div>
+</del>
+<!--AdminNavBar-->

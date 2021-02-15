@@ -1,0 +1,140 @@
+<div class="contents h-4r" id="grid_items">
+  <div class="grid items fh fw">
+    <div class="controls bgc-b2p h3r">
+      <span class="def dib w25p"><b>Total:</b> {{data.items.total}}</span>
+      <span class="def dib w25p"><b>Rows:</b> {{data.items.count}}</span>
+      <span class="def dib w25p"><b>Page:</b> {{data.items.current_page}}/{{data.items.total_pages}}</span>
+      <span class="page dib w25p p0 fs0">
+        <a class="prev button dib w30p" href="admin=items;seq={{data.items.seq}};rows={{data.items.rows}};start={{data.items.prev_start}}"><i class="gi left black"></i></a>
+        <a class="button dib w40p sort_filter toggle" data-toggle="#form_sort_filter" href="#"><i class="gi tuning black"></i></a>
+        <a class="next button dib w30p" href="admin=items;seq={{data.items.seq}};rows={{data.items.rows}};start={{data.items.next_start}}"><i class="gi right black"></i></a>
+      </span>
+      <form id="form_sort_filter" class="dn" method="POST" action="admin=items;seq={{data.items.seq}}" class="fw">
+        <input class="w10p" type="text" name="rows" placeholder="Rows" value="{{data.items.rows}}">
+        <input class="w10p" type="text" name="page" placeholder="Page" value="{{data.items.current_page}}">
+        <input class="w35p" type="text" name="sort" placeholder="Sort" value="{{data.items.sort_val}}">
+        <input class="w35p" type="text" name="filter" placeholder="Filter" value="{{data.items.filter_val}}">
+        <button class="w10p"><i class="gi post black"></i></button>
+      </form>
+    </div>
+
+    <div class="list h-3r">
+      <div class="list_header h2r">
+        <span class="name dib w-20r">title</span>
+        <span class="dib w5r tac">state</span>
+        <span class="dib w5r tac">type</span>
+        <span class="created_date dib w10r tar">created (tsc)</span>
+      </div>
+      <del g="if|data.items.total|is:0" NoGridData>
+        <div class="list_data h-2r">
+          <p class="no_grid_data">
+            <i class="gi nogriddata light"></i>
+            <b>No grid data found.<br>Do something!</b>
+          </p>
+        </div>
+      </del>
+      <!--NoGridData-->
+      <del g="if|data.items.total|gt:0" YesGridData>
+        <div class="list_data h-2r ss_raw" g="each|data.items.list" grid_data_row>
+          <div class="list_row list_row_{{id}}">
+            <span class="name dib w-20r">
+              <script>var row_{{id}}={{g_fill}};</script>
+              <a href="#" class="show fill form_action activate" data-fill="row_{{id}}" data-show="#item_win" data-activate=".list_row" data-form="#item_details_form" data-action="admin=items;edit">
+                {{g_name}}
+              </a>
+            </span>
+            <span class="dib w5r tac">{{g_state}}</span>
+            <span class="dib w5r tac">{{g_type}}</span>
+            <span class="created_date dib w10r tar num">{{tsc}}</span>
+          </div>
+        </div>
+        <!--grid_data_row-->
+      </del>
+      <!--YesGridData-->
+    </div>
+  </div>
+</div>
+
+<div id="item_win" class="dr_window hidable dn">
+  <a class="hide wx deact">×</a>
+  <div class="dr_window_title h4r bob1">
+    <p class="title_text">Item Editor : <em class="label_g_name"></em></p>
+  </div>
+  <div class="dr_window_content">
+    <form id="item_details_form" method="POST" action="">
+      <div class="swapper_actions">
+        <input type="hidden" class="id" name="id" value="" />
+        <div class="dib dd_cont delete">
+          <a href="#" class="dd_toggle confirm link button attention"><i class="gi trash"></i></a>
+          <div class="dd_menu dd_left dn">
+            <a class="dd_item delete_link" href="#">Yes, I want to delete this item!</a>
+          </div>
+        </div>
+        <input type="reset" class="reset link button negative fll form_action" data-form="#item_details_form" data-action="admin=items;add" value="Reset" />
+        <input type="submit" class="submit link button positive flr" value="Save" />
+      </div>
+
+      <div class="swapper accordion">
+        <a href="#" class="swink swactive" data-swap=".swap_general">
+          <h5>Main</h5>
+        </a>
+        <div class="swap_general swonts swactive p1r">
+          <input name="g_name" class="g_name fw" type="text" placeholder="g_name" value="">
+
+          <input name="g_alias" class="g_alias w50p" type="text" placeholder="g_alias" value="">
+          <input name="g_hash" class="g_hash w20p" type="text" placeholder="g_hash" value="" disabled>
+          <input name="g_link" class="g_link w30p" type="text" placeholder="g_link" value="">
+
+          <select name="g_state" class="g_state w25p">
+            <option disabled selected>Item States</option>
+            <del g="each|data.states" state_select>
+              <option value="{{0}}">{{0}}</option>
+            </del>
+            <!--state_select-->
+          </select>
+          <select name="g_type" class="g_type w25p">
+            <option disabled selected>Item Types</option>
+            <del g="each|data.types" type_select>
+              <option value="{{0}}">{{0}}</option>
+            </del>
+            <!--type_select-->
+          </select>
+          <input name="tss" class="tss w25p" type="text" placeholder="tss" value="">
+          <input name="tse" class="tse w25p" type="text" placeholder="tse" value="">
+
+          <textarea name="g_blurb" class="fw g_blurb" placeholder="g_blurb"></textarea>
+          <input type="text" name="g_labels" class="g_labels fw tagify_raw" placeholder='enter or select labels' value="" data-source="./admin=items;query=labels.json">
+        </div>
+        <a href="#" class="swink" data-swap=".swap_rte">
+          <h5>Text</h5>
+        </a>
+        <div class="swap_rte swonts p1r">
+          <div class="g_text quill mt1r" data-name="g_text">
+            <p>Hello World!</p>
+            <p>Some initial <strong>bold</strong> text</p>
+            <p><br></p>
+          </div>
+        </div>
+        <a href="#" class="swink" data-swap=".swap_media">
+          <h5>Media</h5>
+        </a>
+        <div class="swap_media swonts">
+          <div class="dropzone_raw sortable g_media" data-raw='' data-name="g_media" data-options='{"url":".\/admin=items;query=upload.json","delete_url":".\/admin=items;query=upload-delete.json","parallelUploads":3,"maxFilesize":2,"maxFiles":3,"thumbnailWidth":210,"thumbnailHeight":160,"acceptedFiles":"image/*","uploads":"{{meta.url.clone_ui}}uploads/"}'>
+            <span class="dz-default dz-message db">
+              <a href="#" class="button dropzone_queue_files">Add Files to Queue</a>
+              <a href="#" class="button dropzone_clear_queue">Clear Queue</a>
+              <a href="#" class="button dropzone_upload_queue flr">Upload Files</a>
+              <input class="dropzone_files" name="dropzone_files" type="hidden" />
+            </span>
+          </div>
+        </div>
+        <a href="#" class="swink" data-swap=".swap_jse">
+          <h5>Bits</h5>
+        </a>
+        <div class="swap_jse swonts p1r">
+          <div class="g_bits jsoneditor_raw" data-raw="{}" data-name="g_bits" style="width: 100%; height: 100%;"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

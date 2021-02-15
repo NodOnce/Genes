@@ -1,0 +1,82 @@
+<del g="if|meta.url.view|is:Admin" AdminDashboard>
+  <div class="action_bar">
+    <a href="#" class="title">{{bits.admin}}</a>
+    <div class="actions dib flr"></div>
+  </div>
+  <del g="use|genes_admin_dashboard.html|genes_ui_tmpls_folder" genes_admin_dashboard></del>
+  <!--genes_admin_dashboard-->
+</del>
+<!--AdminDashboard-->
+<del g="if|meta.url.view|is:AdminConfig" AdminConfig>
+  <form action="admin=config" method="POST" class="fh fw">
+    <div class="action_bar">
+      <a href="#" class="title">{{bits.admin_config}}</a>
+      <div class="actions dib flr"><input class="link" type="submit" value="Save"></div>
+    </div>
+    <div class="contents">
+      <div class="jsoneditor_raw" data-source="{{meta.url.base}}admin=config;query=all.json" data-branch="tmp.config" data-name="config" style="width: 100%; height: 100%;"></div>
+    </div>
+  </form>
+</del>
+<!--AdminConfig-->
+<del g="if|meta.url.view|is:AdminLogs" AdminLogs>
+  <div class="action_bar">
+    <a href="#" class="title">{{bits.admin_logs}}</a>
+    <div class="actions dib flr"></div>
+  </div>
+  <div class="contents logs_list ml1r">
+    <div class="list_data fh ss_raw" g="each|data.logs.list" ss-container grid_log_row>
+      <div class="list_row">
+        <span class="dib w10r num bor1">{{date}}</span>
+        <span class="dib w6r tar num bor1">{{render_time}}</span>
+        <span class="dib w6r tar num bor1">{{render_mem}}</span>
+        <span class="created_date dib w-22r num oh">{{msg}}</span>
+      </div>
+    </div>
+    <!--grid_log_row-->
+  </div>
+</del>
+<!--AdminLogs-->
+<del g="if|meta.url.view|is:AdminItems" AdminItems>
+  <div class="action_bar">
+    <a href="#" class="title">{{bits.admin_items}}</a>
+    <div class="actions dib flr">
+      <a href="#" class="link button show reset form_action" data-form="#item_details_form" data-action="admin=items;add" data-show="#item_win">New</a>
+    </div>
+  </div>
+  <del g="use|genes_admin_items.html|genes_ui_tmpls_folder" grid_admin_items></del>
+  <!--grid_admin_items-->
+</del>
+<!--AdminItems-->
+<del g="if|meta.url.view|is:AdminLabels" AdminLabels>
+  <div class="action_bar">
+    <a href="#" class="title">{{bits.admin_labels}}</a>
+    <div class="actions dib flr">
+      <a href="#" class="link button show reset form_action" data-form="#label_details_form" data-action="admin=labels;add" data-show="#label_win">New</a>
+    </div>
+  </div>
+  <del g="use|genes_admin_labels.html|genes_ui_tmpls_folder" grid_admin_labels></del>
+  <!--grid_admin_labels-->
+</del>
+<!--AdminLabels-->
+<del g="if|meta.url.view|is:AdminEvents" AdminEvents>
+  <div class="action_bar">
+    <a href="#" class="title">{{bits.admin_events}}</a>
+    <div class="actions dib flr">
+    </div>
+  </div>
+  <del g="use|genes_admin_events.html|genes_ui_tmpls_folder" grid_admin_events></del>
+  <!--grid_admin_events-->
+</del>
+<!--AdminEvents-->
+<del g="if|meta.url.view|is:AdminUsers" AdminUsers>
+  <div class="action_bar">
+    <a href="#" class="title">{{bits.admin_users}}</a>
+    <div class="actions dib flr">
+      <a href="#" class="link button show reset form_action" data-form="#user_details_form" data-action="admin=users;add" data-show="#user_win">New</a>
+    </div>
+  </div>
+  <del g="use|genes_admin_users.html|genes_ui_tmpls_folder" grid_admin_users></del>
+  <!--grid_admin_users-->
+</del>
+<!--AdminUsers-->

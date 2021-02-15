@@ -1,0 +1,113 @@
+<div class="contents h-4r" id="grid_labels">
+  <div class="grid labels fh fw">
+    <div class="controls bgc-b2p h3r">
+      <span class="def dib w25p"><b>Total:</b> {{data.labels.total}}</span>
+      <span class="def dib w25p"><b>Rows:</b> {{data.labels.count}}</span>
+      <span class="def dib w25p"><b>Page:</b> {{data.labels.current_page}}/{{data.labels.total_pages}}</span>
+      <span class="page dib w25p p0 fs0">
+        <a class="prev button dib w30p" href="admin=labels;seq={{data.labels.seq}};rows={{data.labels.rows}};start={{data.labels.prev_start}}"><i class="gi left black"></i></a>
+        <a class="button dib w40p sort_filter toggle" data-toggle="#form_sort_filter" href="#"><i class="gi tuning black"></i></a>
+        <a class="next button dib w30p" href="admin=labels;seq={{data.labels.seq}};rows={{data.labels.rows}};start={{data.labels.next_start}}"><i class="gi right black"></i></a>
+      </span>
+      <form id="form_sort_filter" class="dn" method="POST" action="admin=labels;seq={{data.labels.seq}}" class="fw">
+        <input class="w10p" type="text" name="rows" placeholder="Rows" value="{{data.labels.rows}}">
+        <input class="w10p" type="text" name="page" placeholder="Page" value="{{data.labels.current_page}}">
+        <input class="w35p" type="text" name="sort" placeholder="Sort" value="{{data.labels.sort_val}}">
+        <input class="w35p" type="text" name="filter" placeholder="Filter" value="{{data.labels.filter_val}}">
+        <button class="w10p"><i class="gi post black"></i></button>
+      </form>
+    </div>
+
+    <div class="list h-3r">
+      <div class="list_header h2r">
+        <span class="dib w10r">type</span>
+        <span class="dib w5r tac">context</span>
+        <span class="dib w-30r pl1r">key : value</span>
+        <span class="dib w5r tac">state</span>
+        <span class="created_date dib w10r tar num">created (tsc)</span>
+      </div>
+      <del g="if|data.labels.total|is:0" NoGridData>
+        <div class="list_data h-2r">
+          <p class="no_grid_data">
+            <i class="gi nogriddata light"></i>
+            <b>No grid data found.<br>Do something!</b>
+          </p>
+        </div>
+      </del>
+      <!--NoGridData-->
+      <del g="if|data.labels.total|gt:0" YesGridData>
+        <div class="list_data h-2r ss_raw" g="each|data.labels.list" ss-container grid_data_row>
+          <div class="list_row list_row_{{id}}">
+            <span class="dib w10r">
+              <script>var row_{{id}}={{g_fill}};</script>
+              <a href="#" class="show fill form_action activate" data-fill="row_{{id}}" data-show="#label_win" data-activate=".list_row" data-form="#label_details_form" data-action="admin=labels;edit">
+                {{g_type}}
+              </a>
+            </span>
+            <span class="dib w5r tac">{{g_context}}</span>
+            <span class="dib w-30r pl1r">{{g_key}} : {{g_value}}</span>
+            <span class="dib w5r tac">{{g_state}}</span>
+            <span class="created_date dib w10r tar num">{{tsc}}</span>
+          </div>
+        </div>
+        <!--grid_data_row-->
+      </del>
+      <!--YesGridData-->
+    </div>
+  </div>
+</div>
+
+<div id="label_win" class="dr_window hidable dn">
+  <a class="hide wx deact">×</a>
+  <div class="dr_window_title h4r bob1">
+    <p class="title_text">Label Editor : <em class="label_g_key"></em></p>
+  </div>
+  <div class="dr_window_content">
+    <form id="label_details_form" method="POST" action="">
+      <div class="swapper_actions">
+        <input type="hidden" class="id" name="id" value="" />
+        <div class="dib dd_cont delete">
+          <a href="#" class="dd_toggle confirm link button attention"><i class="gi trash"></i></a>
+          <div class="dd_menu dd_left dn">
+            <a class="dd_item delete_link" href="#">Yes, I want to delete this label!</a>
+          </div>
+        </div>
+        <input type="reset" class="reset link button negative fll form_action" data-form="#label_details_form" data-action="admin=labels;add" value="Reset" />
+        <input type="submit" class="submit link button positive flr" value="Save" />
+      </div>
+
+      <div class="swapper accordion">
+        <a href="#" class="swink swactive" data-swap=".swap_general">
+          <h5>Main</h5>
+        </a>
+        <div class="swap_general swonts swactive p1r">
+          <select name="g_type" class="g_type w33p">
+            <option disabled selected>Label Types</option>
+            <del g="each|data.types" type_select>
+              <option value="{{0}}">{{0}}</option>
+            </del>
+            <!--type_select-->
+          </select>
+          <input name="g_context" class="g_context w33p" type="text" placeholder="g_context" value="">
+          <select name="g_state" class="g_state w33p">
+            <option disabled selected>Label States</option>
+            <del g="each|data.states" state_select>
+              <option value="{{0}}">{{0}}</option>
+            </del>
+            <!--state_select-->
+          </select>
+
+          <input name="g_key" class="g_key w50p" type="text" placeholder="g_key" value="">
+          <input name="g_value" class="g_value w50p" type="text" placeholder="g_value" value="">
+        </div>
+
+        <a href="#" class="swink" data-swap=".swap_jse">
+          <h5>Bits</h5>
+        </a>
+        <div class="swap_jse swonts p1r">
+          <div class="g_bits jsoneditor_raw" data-raw="{}" data-name="g_bits" style="width: 100%; height: 100%;"></div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

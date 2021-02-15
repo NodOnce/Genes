@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <del g="use|root_head.html|genes_ui_tmpls_folder" RootHead></del>
+  <!--RootHead-->
+</head>
+
+<body>
+  <div id="root" class="fh fw">
+    <div id="navigation">
+      <del g="use|root_nav.html|genes_ui_tmpls_folder" RootNav></del>
+      <!--RootNav-->
+    </div>
+
+    <div id="main">
+      <del g="use|root_msgs.html|genes_ui_tmpls_folder" RootMsgs></del>
+      <!--RootMsgs-->
+      <div class="header_bar">
+        <h4 class="dib">
+          genes
+        </h4>
+        <del g="if|meta.user.type|not:guest" aupo>
+          <div class="profile_menu dib flr">
+            <a href="#" class="profile_name tar dib"><i class="gi user blue"></i> {{meta.user.name}}</a>
+            <div class="dib dd_cont">
+              <a class="button dd_toggle dd_drop bon bol1"></a>
+              <div class="dd_menu dn">
+                <a class="dd_item" href="logout"><i class="gi close mr05r"></i> Logout</a>
+              </div>
+            </div>
+          </div>
+        </del>
+        <!--aupo-->
+      </div>
+      <div class="h-4r">
+        <del g="if|meta.url.mod|is:User" ModUser>
+          <div id="login" class="bgs_randomize fh fw" g="use|genes_user.html|genes_ui_tmpls_folder" user></div>
+          <!--user-->
+        </del>
+        <!--ModUser-->
+        <del g="if|meta.url.mod|is:Notes" ModNotes>
+          <div id="notes" class="fh fw" g="use|genes_notes.html|genes_ui_tmpls_folder" notes></div>
+          <!--notes-->
+        </del>
+        <!--ModNotes-->
+        <del g="if|meta.url.mod|is:Admin" ModAdmin>
+          <div id="admin" class="fh fw" g="use|genes_admin.html|genes_ui_tmpls_folder" admin></div>
+          <!--admin-->
+        </del>
+        <!--ModAdmin-->
+        <del g="if|meta.url.mod|is:Deezer" ModDeezer>
+          <div id="deezer" class="fh fw" g="use|genes_deezer.html|genes_ui_tmpls_folder" deezer></div>
+          <!--deezer-->
+        </del>
+        <!--ModDeezer-->
+      </div>
+    </div>
+
+    <div id="details">
+      <del g="use|root_zone.html|genes_ui_tmpls_folder" RootZone></del>
+      <!--RootZone-->
+    </div>
+  </div>
+
+  <del g="use|root_footer.html|genes_ui_tmpls_folder" RootFooter></del>
+  <!--RootFooter-->
+</body>
+
+</html>

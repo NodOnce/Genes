@@ -1,0 +1,146 @@
+.dropzone, .dropzone * {
+	box-sizing: border-box
+}
+
+.dropzone {
+	position: relative
+}
+
+.dropzone .dz-preview {
+	position: relative;
+	display: inline-block;
+	width: 120px;
+	margin: 0.5em
+}
+
+.dropzone .dz-preview .dz-progress {
+	display: block;
+	height: 1.25rem;
+	border: 1px solid #aaa
+}
+
+.dropzone .dz-preview .dz-progress .dz-upload {
+	display: block;
+	height: 100%;
+	width: 0;
+	background: green
+}
+
+.dropzone .dz-preview .dz-error-message {
+	color: red;
+	display: none
+}
+
+.dropzone .dz-preview.dz-error .dz-error-message, .dropzone .dz-preview.dz-error .dz-error-mark {
+	display: block
+}
+
+.dropzone .dz-preview.dz-success .dz-success-mark {
+	display: block
+}
+
+.dropzone .dz-preview .dz-error-mark, .dropzone .dz-preview .dz-success-mark {
+	position: absolute;
+	display: none;
+	left: 30px;
+	top: 30px;
+	width: 54px;
+	height: 58px;
+	left: 50%;
+	margin-left: -27px
+}
+
+.dropzone.dropzone_raw {
+	background: rgba(255, 255, 0, 0.1);
+	border: 1px dashed #ccc;
+	padding: 1rem;
+}
+
+.dropzone.dropzone_raw .dropzone_raw_input {
+	display: none;
+}
+
+.dropzone.dropzone_raw .dz-default {
+	width: 100%;
+}
+
+.dropzone.dropzone_raw .dz-preview {
+	display: inline-block;
+	width: calc((100% - 2rem)/3);
+	background: rgba(0, 0, 0, 0.1);
+	text-align: center;
+	margin-top: 1rem;
+	margin-right: 1rem;
+}
+
+.dropzone.dropzone_raw .dz-preview:nth-of-type(3n) {
+  margin-right: 0;
+}
+
+.dropzone.dropzone_raw .dz-remove {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 2rem;
+	height: 2rem;
+	display: block;
+	background: rgba(255, 0, 0, 0.1);
+	line-height: 2rem;
+	font-weight: bold;
+	font-size: 1.5rem;
+	color: #777;
+	z-index: 1;
+}
+
+.dropzone.dropzone_raw .dz-remove:hover {
+	background: rgba(255, 0, 0, 0.8);
+	color: #fff;
+}
+
+.dropzone.dropzone_raw .dz-filename {
+	white-space: nowrap;
+	padding: 0.25rem 0.5rem;
+	overflow: hidden;
+	background: #ffe375;
+	font-size: 0.8rem;
+}
+
+.dropzone.dropzone_raw .dz-filename span {
+	font-size: 0.8rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+}
+
+.dropzone.dropzone_raw .dz-error-mark {}
+
+.dropzone.dropzone_raw div.dz-error-message {
+	position: absolute;
+	padding: 10rem 1rem 1rem 1rem;
+	top: 0;
+	left: 0;
+	background: rgba(255, 0, 0, 0.5);
+	color: #fff;
+	height: 100%;
+	width: 100%;
+}
+
+.dropzone.dropzone_raw div.dz-error-message span {
+	font-size: 0.8rem;
+	display: block;
+}
+
+.dropzone.dropzone_raw .dz-preview .dz-size span {
+	font-size: 0.75rem;
+	display: inline-block;
+	padding: 0.25rem;
+	border-radius: 0.25rem;
+	background: rgba(0, 0, 0, 0.1);
+	border: 1px solid #999;
+	margin: 0.25rem;
+}
+
+.dropzone .dz-image img {
+  max-width: 100%;
+}

@@ -1,0 +1,83 @@
+<div class="action_bar">
+  <a href="#" class="title">Membership</a>
+  <div class="actions dib flr">
+    <div class="dib dd_cont">
+      <a class="button dd_toggle dd_drop_3d"></a>
+      <div class="dd_menu dn">
+        <a href="./quick" class="dd_item" g="if|meta.rules.no|dnh:UserQuickLogin" mrlUQL>Quick Login</a>
+        <!--mrlUQL-->
+        <a href="./login" class="dd_item" g="if|meta.rules.no|dnh:UserLogin" mrlUL>Login</a>
+        <!--mrlUL-->
+        <a href="./register" class="dd_item" g="if|meta.rules.no|dnh:UserRegister" mrlUR>Register</a>
+        <!--mrlUR-->
+        <a href="./activate" class="dd_item" g="if|meta.rules.no|dnh:UserActivate" mrlUA>Activate</a>
+        <!--mrlUA-->
+        <a href="./forgot" class="dd_item" g="if|meta.rules.no|dnh:UserForgot" mrlUF>Forgot</a>
+        <!--mrlUF-->
+        <a href="./profile" class="dd_item" g="if|meta.rules.no|dnh:UserProfile" mrlUP>Profile</a>
+        <!--mrlUP-->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contents ss_raw">
+  <div class="UserLogin" g="if|meta.rules.no|dnh:UserLogin" hUL>
+    <del g="if|meta.url.view|is:UserLogin" siUL>
+      <form id="login_form" method="POST" class="p6r">
+        <div class="pb2r">
+          <h5>Welcome!</h5>
+          <p>Please login to continue.</p>
+        </div>
+        <div class="form_row">
+          <label class="w33p" for="username">Username</label>
+          <input class="w67p" id="username" name="username" type="text" onkeyup="document.getElementById('login_form').action='user=login';document.getElementById('login_form_post').removeAttribute('disabled')" placeholder="Enter your email address / username">
+        </div>
+        <div class="form_row">
+          <label class="w33p" for="password">Password</label>
+          <input class="w67p" id="password" name="password" type="password">
+        </div>
+        <div class="form_row action tar pt2r">
+          <div class="details"><input id="login_form_post" type="submit" value="Login" disabled>
+          </div>
+        </div>
+      </form>
+    </del>
+    <!--siUL-->
+  </div>
+  <!--hUL-->
+  <div class="UserRegister" g="if|meta.rules.no|dnh:UserRegister" hUR>
+    <del g="if|meta.url.view|is:UserRegister" siUR>
+      <form id="register_form" method="POST" class="p6r">
+        <div class="pb2r">
+          <h5>Hello.</h5>
+          <p>Please enter your info to register.</p>
+        </div>
+        <div class="form_row">
+          <label class="w33p" for="username">Email</label>
+          <input class="w67p" id="username" name="username" type="text" onkeyup="document.getElementById('register_form').action='user=register';document.getElementById('register_form_post').removeAttribute('disabled')" placeholder="Enter your email address">
+        </div>
+        <div class="form_row">
+          <label class="w33p" for="password">Password</label>
+          <div class="dib w67p">
+            <input id="password" name="password" type="password" class="pass w-2r" placeholder="Enter your password...">
+            <a href="#" class="button pctv dib w2r" data-pctv=".pass"></a>
+          </div>
+        </div>
+        <div class="form_row action tar pt2r">
+          <div class="details"><input id="register_form_post" type="submit" value="Register" disabled>
+          </div>
+        </div>
+      </form>
+    </del>
+    <!--siUR-->
+  </div>
+  <!--hUR-->
+  <div class="UserActivate" g="if|meta.rules.no|dnh:UserActivate" hUA></div>
+  <!--hUA-->
+  <div class="UserQuickLogin" g="if|meta.rules.no|dnh:UserQuickLogin" hUQL></div>
+  <!--hUQL-->
+  <div class="UserForgot" g="if|meta.rules.no|dnh:UserForgot" hUF></div>
+  <!--hUF-->
+  <div class="UserProfile" g="if|meta.rules.no|dnh:UserProfile" hUP></div>
+  <!--hUP-->
+</div>
