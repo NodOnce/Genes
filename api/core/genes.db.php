@@ -506,7 +506,7 @@ g::def("db", array(
                                 $pack = $conn->prepare($sql);
                                 $pack->execute($val);
                             }
-                            g::run("tools.Say", "DB.Execute: " . $sql, 1);
+                            //g::run("tools.Say", "DB.Execute: " . $sql, 1);
                         } catch (PDOException $e) {
                             $error = $e->getMessage();
                             // var_dump($error);die;
