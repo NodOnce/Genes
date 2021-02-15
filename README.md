@@ -1,2 +1,8 @@
-# Genes
-Home of the Genes : A Simple API &amp; UI Framework
+# genes
+a simple api and ui framework.
+v.2021.02.15
+
+https://genes.one
+
+Copyright (c) 2021, NodOnce OÜ
+https://nodonce.com
