@@ -3,10 +3,10 @@ g::set("void.mailgun", array(
     "views" => array(),
     "bits" => array(),
     "opts" => array(
-        "FROM_NAME" => "DV",
-        "FROM_EMAIL" => "devrimvar@gmail.com",
-        "API_KEY" => "a64ec1cdfb96474a6906b4b7ffaae3dd-19f318b0-b0b4fc7f",
-        "API_BASE_URL" => "https://api.mailgun.net/v3/mg.nodonce.com",
+        "FROM_NAME" => "",
+        "FROM_EMAIL" => "",
+        "API_KEY" => "",
+        "API_BASE_URL" => "",
     ),
     "tmpls" => array()));
 g::def("mods.mailgun", array(
