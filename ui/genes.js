@@ -5,7 +5,7 @@
  */
 (function (g) {
   // PRIVATE APP VARIABLES OBJECT
-  var app = { debug: true, env: {}, void: {} };
+  var app = { debug: false, env: {}, void: {} };
   // PRIVATE FUNCTION DEFINITIONS OBJECT
   var fns = { evts: {} };
 
@@ -86,7 +86,9 @@
       var line = (g.is_obj(str_or_arr_or_obj)) ? JSON.stringify(str_or_arr_or_obj) : str_or_arr_or_obj;
       dd.innerHTML = "<span>" + g.now() + " | " + line + "</span>" + dd.innerHTML;
     }
-    console.log(str_or_arr_or_obj);
+    if (app.debug) {
+      console.log(str_or_arr_or_obj);
+    }
   }; // console.log with time
   g.now = function (ms, no_ms) {
     var d = (g.is(ms)) ? new Date(parseFloat(ms.toString())) : new Date();
@@ -740,6 +742,12 @@
       var target = el.dataset.toggle;
       var toggle = g.el(target);
       g.tc(toggle, "dn");
+    });
+    g.on("click", ".toggle-css", function (el) {
+      var target = el.dataset.toggle;
+      var css = el.dataset.css;
+      var toggle = g.el(target);
+      g.tc(toggle, css);
     });
     g.on("click", ".swink", function (el) {
       var swapper = el.closest(".swapper");

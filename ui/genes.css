@@ -457,8 +457,144 @@ input[type="radio"]:checked+label::before {
   width: 80%;
 }
 
+.w1o12 {
+  width: 8.33%;
+}
+
+.w2o12 {
+  width: 16.66%;
+}
+
+.w3o12 {
+  width: 25%;
+}
+
+.w4o12 {
+  width: 33.33%;
+}
+
+.w5o12 {
+  width: 41.66%;
+}
+
+.w6o12 {
+  width: 50%;
+}
+
+.w7o12 {
+  width: 58.33%;
+}
+
+.w8o12 {
+  width: 66.66%;
+}
+
+.w9o12 {
+  width: 75%;
+}
+
+.w10o12 {
+  width: 83.33%;
+}
+
+.w11o12 {
+  width: 91.66%;
+}
+
+.w12o12 {
+  width: 100%;
+}
+
+.h10p {
+  height: 10%;
+}
+
+.h20p {
+  height: 20%;
+}
+
+.h25p {
+  height: 25%;
+}
+
+.h30p {
+  height: 30%;
+}
+
+.h33p {
+  height: 33.3333%;
+}
+
+.h35p {
+  height: 35%;
+}
+
+.h40p {
+  height: 40%;
+}
+
 .h50p {
   height: 50%;
+}
+
+.h67p {
+  height: 66.6667%;
+}
+
+.h75p {
+  height: 75%;
+}
+
+.h80p {
+  height: 80%;
+}
+
+.h1o12 {
+  height: 8.33%;
+}
+
+.h2o12 {
+  height: 16.66%;
+}
+
+.h3o12 {
+  height: 25%;
+}
+
+.h4o12 {
+  height: 33.33%;
+}
+
+.h5o12 {
+  height: 41.66%;
+}
+
+.h6o12 {
+  height: 50%;
+}
+
+.h7o12 {
+  height: 58.33%;
+}
+
+.h8o12 {
+  height: 66.66%;
+}
+
+.h9o12 {
+  height: 75%;
+}
+
+.h10o12 {
+  height: 83.33%;
+}
+
+.h11o12 {
+  height: 91.66%;
+}
+
+.h12o12 {
+  height: 100%;
 }
 
 .pb0 {
@@ -2977,4 +3113,147 @@ table tbody tr:nth-child(2n) td {
   font-weight: bold;
   cursor: pointer;
   z-index: 100;
+}
+
+/* 
+  there are two aspects for responsive design
+  > positioning: display-block, show / hide
+  all screens are smaller than 1024 can be considered vertical 
+  larger can be considered horizontal 
+  > legibility: font-size and padding
+  this varies a lot, but not positioning-wise, actually legibility-wise 
+  so font-size is important here.
+*/
+
+/* on vertical screen : positioning */
+
+@media (max-width: 1023px) {
+  .ovs-db {
+    display: block;
+  }
+  .ovs-dn {
+    display: none;
+  }
+  .ovs-dib {
+    display: inline-block;
+  }
+  .ovs-poa {
+    position: absolute;
+  }
+  .ovs-pof {
+    position: fixed;
+  }
+  .ovs-por {
+    position: relative;
+  }
+  .ovs-p1r {
+    padding: 1rem;
+  }
+  .ovs-p2r {
+    padding: 2rem;
+  }
+  .ovs-m1r {
+    margin: 1rem;
+  }
+  .ovs-m2r {
+    margin: 2rem;
+  }
+  .ovs-fw {
+    width: 100%;
+  }
+  .ovs-tal {
+    text-align: left;
+  }
+  .ovs-tac {
+    text-align: center;
+  }
+  .ovs-tar {
+    text-align: right;
+  }
+  .ovs-ha {
+    height: auto;
+  }
+}
+
+/* on horizontal screen : positioning */
+
+@media (min-width: 1024px) {
+  .ohs-db {
+    display: block;
+  }
+  .ohs-dn {
+    display: none;
+  }
+  .ohs-dib {
+    display: inline-block;
+  }
+  .ohs-poa {
+    position: absolute;
+  }
+  .ohs-pof {
+    position: fixed;
+  }
+  .ohs-por {
+    position: relative;
+  }
+}
+
+/* mobile viewport */
+
+@media (max-width: 599px) {
+  html {
+    font-size: 3vw;
+  }
+}
+
+/* tablet viewport */
+
+@media (min-width: 600px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+/* larger viewports */
+
+@media (min-width: 1000px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1100px) {
+  html {
+    font-size: 13.5px;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1300px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+
+@media (min-width: 1400px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1500px) {
+  html {
+    font-size: 15.5px;
+  }
+}
+
+@media (min-width: 1600px) {
+  html {
+    font-size: 16px;
+  }
 }
