@@ -583,7 +583,7 @@
     app.env.height = window.innerHeight;
     g.ct("rt");
     g.st("rt", function () {
-      window.scrollTo(0, 1);
+      //window.scrollTo(0, 1);
       //var html = document.getElementsByTagName("html")[0];
       //html.style.width = app.env.width + "px";
       //html.style.height = app.env.height + "px";
