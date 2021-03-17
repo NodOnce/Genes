@@ -1,5 +1,5 @@
 /*!
- * genes.css v2021.02.15
+ * genes.css v2021.03.17
  * (c) 2021 NodOnce OÜ
  * All rights reserved.
  */
@@ -1051,6 +1051,10 @@ input[type="radio"]:checked+label::before {
 
 .lh10r {
   line-height: 10rem;
+}
+
+.mwfw {
+  max-width: 100%;
 }
 
 .w1r {
@@ -3114,16 +3118,6 @@ table tbody tr:nth-child(2n) td {
   cursor: pointer;
   z-index: 100;
 }
-
-/* 
-  there are two aspects for responsive design
-  > positioning: display-block, show / hide
-  all screens are smaller than 1024 can be considered vertical 
-  larger can be considered horizontal 
-  > legibility: font-size and padding
-  this varies a lot, but not positioning-wise, actually legibility-wise 
-  so font-size is important here.
-*/
 
 /* on vertical screen : positioning */
 
